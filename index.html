@@ -290,6 +290,90 @@
 
 
   
+    <article id="post-程序员Mac必备之brew：brew安装看这一篇就够了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/11/01/%E7%A8%8B%E5%BA%8F%E5%91%98Mac%E5%BF%85%E5%A4%87%E4%B9%8Bbrew%EF%BC%9Abrew%E5%AE%89%E8%A3%85%E7%9C%8B%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/">程序员Mac必备之brew：brew安装看这一篇就够了</a>
+    </h1>
+  
+
+        
+        <a href="/2022/11/01/%E7%A8%8B%E5%BA%8F%E5%91%98Mac%E5%BF%85%E5%A4%87%E4%B9%8Bbrew%EF%BC%9Abrew%E5%AE%89%E8%A3%85%E7%9C%8B%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/" class="archive-article-date">
+  	<time datetime="2022-11-01T15:02:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="before-安装-Homebrew"><a href="#before-安装-Homebrew" class="headerlink" title="before 安装 Homebrew"></a>before 安装 Homebrew</h1><p>安装 <code>xcode-select</code>，命令 <code>xcode-select --install</code> </p>
+<blockquote>
+<p>安装 <code>xcode-select</code> 主要是为了安装 Git ，因为安装 Homebrew 的过程中，需要使用 Git，否则会<font style="color: red">报错</font></p>
+</blockquote>
+<p>安装需要 10min 左右</p>
+<h1 id="安装-Homebrew"><a href="#安装-Homebrew" class="headerlink" title="安装 Homebrew"></a>安装 Homebrew</h1><p>官网的命令在国内来说，不太好用，有很大几率安装不成功。</p>
+<p>使用 <code>/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</code> 来安装</p>
+<ol>
+<li>一般选择中科大下载源，输入 1 回车</li>
+<li>输入 y 回车</li>
+<li>输入 开机密码 回车</li>
+<li>等待…</li>
+<li>⌘Q 退出终端，并再次打开</li>
+<li>输入 brew 回车，出现了操作指令目录，安装就✅啦！</li>
+</ol>
+<h1 id="还没结束-很快就好"><a href="#还没结束-很快就好" class="headerlink" title="还没结束 很快就好"></a>还没结束 很快就好</h1><ol>
+<li>输入 <code>brew -v</code></li>
+<li>复制 <code>To add an exception for this directory, call:</code> 后的命令，如： <code>git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask</code> 以及 <code>git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core</code></li>
+<li>执行复制好的 <font style="color: red">2</font> 条命令</li>
+<li>再执行一条命令 <code>git config --global --add safe.directory /usr/local/Homebrew/Library/Taps/homebrew/homebrew-services</code></li>
+<li>再次输入 <code>brew -v</code> ，发现两条报错消失</li>
+</ol>
+<h1 id="结束！🍺"><a href="#结束！🍺" class="headerlink" title="结束！🍺"></a>结束！🍺</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/11/01/%E7%A8%8B%E5%BA%8F%E5%91%98Mac%E5%BF%85%E5%A4%87%E4%B9%8Bbrew%EF%BC%9Abrew%E5%AE%89%E8%A3%85%E7%9C%8B%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
