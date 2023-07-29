@@ -52,7 +52,7 @@
   isHome: true,
   isHighlightShrink: undefined,
   isToc: false,
-  postUpdate: '2023-07-29 11:11:00'
+  postUpdate: '2023-07-29 15:26:01'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -182,8 +182,24 @@ Git版本号Git 会根据我们提交的内容通过 SHA-1 加密算法计算得
 这个40位的版本号可以在分支合并的时候避免版本的冲突，也可以定位仓库中的文件：2(文件夹) + 38(文件名) 
 举例首先我们添加了一个文件，进行 commit 后产生的版本号是 a0dd3557ae2c89c3f78fbb923d5c061406652e2e。我们可以通过前两位 a0 来定位文件所在的文件夹 ./.git/objects/a0/dd3557ae2c89c3f78fbb923d5c061406652e2e。
 我们想要查看这个文件到底是什么内容，但是我们无法直接打开。通过 git cat-file -p a0dd3557ae2c89c3f78fbb923d5c061406652e2e 进行查看。此时，输出的内容是当前的 提交信息。
-123456&gt; git cat-file -p a0dd3557ae2c89c3f78fbb923d5c061406652e2etree 6f9509c88bed7080d496fc5e1d87 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/7920dac/" title="（未完）JavaScript知识点：变量提升与函数提升">（未完）JavaScript知识点：变量提升与函数提升</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-28T14:34:56.000Z" title="发表于 2023-02-28 22:34:56">2023-02-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9/">JavaScript知识点</a></span></div><div class="content">变量声明提升首先，我们来看一道题目
-123456var a = 3;function fn() &#123;  console.log(a);  var a = 4;&#125;fn(); // undefined
+123456&gt; git cat-file -p a0dd3557ae2c89c3f78fbb923d5c061406652e2etree 6f9509c88bed7080d496fc5e1d87 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/7920dac/" title="变量提升与函数提升 / 执行上下文与执行上下文栈 / 作用域与作用域链">变量提升与函数提升 / 执行上下文与执行上下文栈 / 作用域与作用域链</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-28T14:34:56.000Z" title="发表于 2023-02-28 22:34:56">2023-02-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9/">JavaScript知识点</a></span></div><div class="content">变量提升与函数提升Part 1
+变量声明提升
+
+
+通过var定义(声明)的变量, 在定义语句之前就可以访问到
+值: undefined
+
+
+函数声明提升
+
+
+通过function声明的函数, 在之前就可以直接调用
+值: 函数定义(对象)
+
+
+问题: 变量提升和函数提升是如何产生的?
+
+变量声明提升123456var a = 3;function fn() &#123;  console.log(a);  var a = 4;&#125;fn(); // undefined
 为什么会输出 undefined 呢？这就需要 变量声明提升 的知识了。
 
 通过 var 定义(声明)的变量, 在定义语句之前就可以访问到
@@ -191,12 +207,7 @@ Git版本号Git 会根据我们提交的内容通过 SHA-1 加密算法计算得
 
 因此，实际的代码执行顺序是：
 12345678var a;a = 3;function fn() &#123;  var a; // 变量声明提升  console.log(a); // undefined  a = 4;&#125;fn();
-之所以不会输出 3，是因为寻找变量会先在自己的作用域中寻找，已经找到了声明但未赋值的 a，即 undefined
-函数声明提升1234fn2(); // 由于函数提升，因此可调用function fn2() &#123;  console.log(&quot;fn2&quot;);&#125;
-
-
-通过 function 声明的函数, 在之前就可以直接调用
-值: 函数 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/cb0f3fba/" title="JavaScript知识点：call、apply、bind">JavaScript知识点：call、apply、bind</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-25T12:39:57.000Z" title="发表于 2023-02-25 20:39:57">2023-02-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9/">JavaScript知识点</a></span></div><div class="content">call() 和 apply()call()语法：fn.call(thisArg, arg1, arg2, ...)，返回值就是函数的返回值
+之所以不会输出 3，是因为寻找变量会先在自己的作用域中寻找，已经找到了声明但未赋值的 a，即 undefin ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/cb0f3fba/" title="JavaScript知识点：call、apply、bind">JavaScript知识点：call、apply、bind</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-25T12:39:57.000Z" title="发表于 2023-02-25 20:39:57">2023-02-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9/">JavaScript知识点</a></span></div><div class="content">call() 和 apply()call()语法：fn.call(thisArg, arg1, arg2, ...)，返回值就是函数的返回值
 apply()语法：fn.apply(thisArg, [argsArray])，返回值就是函数的返回值
 apply 主要和数组有关系，比如使用 Math.max() 求数组的最大值
 123456789101112// 使用场景：求数组最大值const max = Math.max(1, 2, 3);console.log(max);// applyconst arr = [1, 2, 3];const max = Math.max.apply(null, arr);console.log(max);// 解构const max = Math.max(...arr);console.log(max);
@@ -236,4 +247,4 @@ No 21234567891011121314setTimeout(function() &#123;    conso ...</div></div></di
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CSS%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="card-category-list-name">CSS知识点</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Git/"><span class="card-category-list-name">Git</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JavaScript%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="card-category-list-name">JavaScript知识点</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/React%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="card-category-list-name">React知识点</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vue%E5%8E%9F%E7%90%86/"><span class="card-category-list-name">Vue原理</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Vue%E7%9F%A5%E8%AF%86%E7%82%B9/"><span class="card-category-list-name">Vue知识点</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/"><span class="card-category-list-name">前端手写代码</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AE%89%E8%A3%85/"><span class="card-category-list-name">安装</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">34</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-11-30T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-07-29T03:11:00.255Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By cenyu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="https://beian.miit.gov.cn/" target="_blank"><span>晋ICP备2022003282号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+            </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">34</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-11-30T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-07-29T07:26:01.494Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By cenyu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="https://beian.miit.gov.cn/" target="_blank"><span>晋ICP备2022003282号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
